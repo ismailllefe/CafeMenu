@@ -1,0 +1,21 @@
+﻿@model CafeMenu.Models.ProductProperty
+
+<h2>Add Product Property</h2>
+
+@using (Html.BeginForm("Create", "ProductProperty", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductID)
+        @Html.DropDownListFor(m => m.ProductID, new SelectList(ViewBag.Products, "ProductID", "ProductName"), "Select a Product", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductID, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PropertyID)
+        @Html.DropDownListFor(m => m.PropertyID, new SelectList(ViewBag.Properties, "PropertyID", "Key"), "Select a Property", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PropertyID, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="@Url.Action("Index", "ProductProperty")" class="btn btn-secondary">Cancel</a>
+}

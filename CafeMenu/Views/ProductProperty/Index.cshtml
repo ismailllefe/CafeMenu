@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CafeMenu.Models.ProductProperty>
+
+<h2>Product Properties</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Property Key</th>
+            <th>Property Value</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pp in Model)
+        {
+            <tr>
+                <td>@pp.ProductPropertyID</td>
+                <td>@pp.Product.ProductName</td>
+                <td>@pp.Property.Key</td>
+                <td>@pp.Property.Value</td>
+                <td>
+                    <a href="@Url.Action("Edit", "ProductProperty", new { id = pp.ProductPropertyID })" class="btn btn-warning">Edit</a>
+                    @using (Html.BeginForm("Delete", "ProductProperty", FormMethod.Post))
+                    {
+                        @Html.Hidden("id", pp.ProductPropertyID)
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "ProductProperty")" class="btn btn-primary">Add New Product Property</a>

@@ -1,0 +1,35 @@
+﻿@model CafeMenu.Models.Product
+
+<h2>Edit Product</h2>
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ProductID)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductName)
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CategoryID)
+        @Html.DropDownListFor(m => m.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"), "Select a Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CategoryID, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ImagePath)
+        @Html.TextBoxFor(m => m.ImagePath, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ImagePath, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="@Url.Action("Index", "Product")" class="btn btn-secondary">Cancel</a>
+}

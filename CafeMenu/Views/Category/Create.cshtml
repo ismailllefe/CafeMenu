@@ -1,0 +1,50 @@
+﻿@model CafeMenu.Models.Category
+
+@{
+    ViewBag.Title = "Add Category";
+}
+
+@using (Html.BeginForm("Create", "Category", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card-style settings-card-2 mb-30">
+                <form action="/Category/Create" method="post">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-style-1">
+                                <label>Category Name</label>
+                                <input type="text" id="CategoryName" name="CategoryName" placeholder="Full Name" />
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a href="@Url.Action("Index", "Category")" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end col -->
+    </div>
+
+}
+    @using (Html.BeginForm("Create", "Category", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.CategoryName)
+            @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.ParentCategoryID)
+            @Html.TextBoxFor(m => m.ParentCategoryID, new { @class = "form-control", type = "number" })
+            @Html.ValidationMessageFor(m => m.ParentCategoryID, "", new { @class = "text-danger" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="@Url.Action("Index", "Category")" class="btn btn-secondary">Cancel</a>
+    }

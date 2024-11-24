@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CafeMenu.Models.Dtos.ProductViewModel>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="icon-card mb-30">
+                <div class="icon purple">
+                    <img src="~/Content/Template/images/products/product-mini-2.jpg" class="card-img-top" alt="@product.ProductName" />
+                </div>
+                <div class="content">
+                    <h6 class="mb-10">@product.ProductName</h6>
+                    <h3 class="text-bold mb-10"> @product.CategoryName</h3>
+                    <p class="text-sm text-success">
+                        @product.Price ₺
+                        <span class="text-gray">(@product.PriceUSD $)</span>
+                    </p>
+
+                    <ul>
+                        @foreach (var prop in product.Properties)
+                        {
+                            <li> <strong>@prop.Key:</strong> @prop.Value</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

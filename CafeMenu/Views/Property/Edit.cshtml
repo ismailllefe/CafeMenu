@@ -1,0 +1,23 @@
+﻿@model CafeMenu.Models.Property
+
+<h2>Edit Property</h2>
+
+@using (Html.BeginForm("Edit", "Property", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.PropertyID)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Key)
+        @Html.TextBoxFor(m => m.Key, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Key, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Value)
+        @Html.TextBoxFor(m => m.Value, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Value, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="@Url.Action("Index", "Property")" class="btn btn-secondary">Cancel</a>
+}

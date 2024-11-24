@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CafeMenu.Models.Property>
+
+<h2>Properties</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var property in Model)
+        {
+            <tr>
+                <td>@property.PropertyID</td>
+                <td>@property.Key</td>
+                <td>@property.Value</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Property", new { id = property.PropertyID })" class="btn btn-warning">Edit</a>
+                    @using (Html.BeginForm("Delete", "Property", FormMethod.Post))
+                    {
+                        @Html.Hidden("id", property.PropertyID)
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Property")" class="btn btn-primary">Add New Property</a>
