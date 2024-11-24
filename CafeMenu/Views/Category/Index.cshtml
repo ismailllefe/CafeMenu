@@ -49,7 +49,11 @@
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
                                             <li class="dropdown-item">
-                                                <a href="#0" class="text-gray">Remove</a>
+                                                @using (Html.BeginForm("Delete", "Category", FormMethod.Post))
+                                                {
+                                                    @Html.Hidden("id", item.CategoryID)
+                                                    <button type="submit" class="text-gray">Remove</button>
+                                                }
                                             </li>
                                             <li class="dropdown-item">
                                                 <a href="@Url.Action("Edit", "Category", new { id = item.CategoryID })" class="text-gray">Edit</a>
@@ -61,55 +65,7 @@
                         }
                         </tbody>
                 </table>
-                <!-- End Table -->
             </div>
         </div>
     </div>
-    <!-- End Col -->
-</div>
-@*<table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParentCategoryID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatorUserID)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParentCategoryID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatorUserID)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
-            </td>
-        </tr>
-    }
-
-    </table>*@
+</div>  

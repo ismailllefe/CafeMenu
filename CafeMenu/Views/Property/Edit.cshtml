@@ -1,23 +1,34 @@
 ﻿@model CafeMenu.Models.Property
 
-<h2>Edit Property</h2>
 
-@using (Html.BeginForm("Edit", "Property", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.PropertyID)
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card-style settings-card-2 mb-30">
+            <form action="/Property/Edit" method="post">
+                <input type="hidden" name="PropertyID" value="@Model.PropertyID" />
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Key)
-        @Html.TextBoxFor(m => m.Key, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Key, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-style-1">
+                            <label>Key</label>
+                            <input type="text" id="Key" name="Key" placeholder="Key" value="@Model.Key" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-style-1">
+                            <label>Value</label>
+                            <input type="text" id="Value" name="Value" placeholder="Value" value="@Model.Value" />
+                        </div>
+                    </div>
+   
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="@Url.Action("Index", "Property")" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Value)
-        @Html.TextBoxFor(m => m.Value, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Value, "", new { @class = "text-danger" })
-    </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a href="@Url.Action("Index", "Property")" class="btn btn-secondary">Cancel</a>
-}

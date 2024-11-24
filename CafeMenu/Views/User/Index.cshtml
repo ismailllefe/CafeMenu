@@ -53,10 +53,14 @@
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
                                             <li class="dropdown-item">
-                                                <a href="#0" class="text-gray">Remove</a>
+                                                @using (Html.BeginForm("Delete", "User", FormMethod.Post))
+                                                {
+                                                    @Html.Hidden("id", item.UserID)
+                                                    <button type="submit" class="text-gray">Remove</button>
+                                                }
                                             </li>
                                             <li class="dropdown-item">
-                                                <a  href="@Url.Action("Edit", "User", new { id = item.UserID })" class="text-gray">Edit</a>
+                                                <a href="@Url.Action("Edit", "User", new { id = item.UserID })" class="text-gray">Edit</a>
                                             </li>
                                         </ul>
                                     </div>

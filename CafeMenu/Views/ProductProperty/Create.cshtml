@@ -1,21 +1,48 @@
 ﻿@model CafeMenu.Models.ProductProperty
 
-<h2>Add Product Property</h2>
 
-@using (Html.BeginForm("Create", "ProductProperty", FormMethod.Post))
-{
-    <div class="form-group">
-        @Html.LabelFor(m => m.ProductID)
-        @Html.DropDownListFor(m => m.ProductID, new SelectList(ViewBag.Products, "ProductID", "ProductName"), "Select a Product", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.ProductID, "", new { @class = "text-danger" })
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card-style settings-card-2 mb-30">
+            <form action="/ProductProperty/Create" method="post">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-style-1">
+                            <label>Select Product</label>
+                            <div class="select-style-1">
+                                <div class="select-position">
+                                    <select id="ProductID" name="ProductID" class="light-bg">
+                                        @foreach (var item in ViewBag.Products)
+                                        {
+                                            <option value="@item.ProductID">@item.ProductName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-style-1">
+                            <label>Select Property</label>
+                            <div class="select-style-1">
+                                <div class="select-position">
+                                    <select id="PropertyID" name="PropertyID" class="light-bg">
+                                        @foreach (var item in ViewBag.Properties)
+                                        {
+                                            <option value="@item.PropertyID">@item.Key</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="@Url.Action("Index", "ProductProperty")" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.PropertyID)
-        @Html.DropDownListFor(m => m.PropertyID, new SelectList(ViewBag.Properties, "PropertyID", "Key"), "Select a Property", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.PropertyID, "", new { @class = "text-danger" })
-    </div>
-
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a href="@Url.Action("Index", "ProductProperty")" class="btn btn-secondary">Cancel</a>
-}

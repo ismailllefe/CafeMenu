@@ -296,6 +296,7 @@
     <Content Include="Content\Template\scss\_preloader.scss" />
     <Content Include="Content\Template\scss\_sidebar.scss" />
     <Content Include="Content\Template\scss\_variables.scss" />
+    <Content Include="DatabaseBackup\CafeMenuDB.bak" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -336,6 +337,7 @@
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Home\Customer.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
