@@ -1,4 +1,5 @@
-﻿using CafeMenu.Helpers;
+﻿using CafeMenu.Filters;
+using CafeMenu.Helpers;
 using CafeMenu.Models;
 using CafeMenu.Models.Dtos;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace CafeMenu.Controllers
 {
+    [Authentication]
     public class HomeController : Controller
     {
         private readonly CafeMenuContext _context = new CafeMenuContext();

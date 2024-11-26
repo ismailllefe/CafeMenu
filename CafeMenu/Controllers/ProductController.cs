@@ -9,17 +9,14 @@ namespace CafeMenu.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
         private readonly CafeMenuContext _context = new CafeMenuContext();
 
-        // GET: Product List
         public ActionResult Index()
         {
             var products = _context.Products.Where(p => !p.IsDeleted).ToList();
             return View(products);
         }
 
-        // GET: Add Product Page
         [HttpGet]
         public ActionResult Create()
         {
@@ -27,14 +24,14 @@ namespace CafeMenu.Controllers
             return View();
         }
 
-        // POST: Add Product to Database
+
         [HttpPost]
         public ActionResult Create(Product product)
         {
             if (ModelState.IsValid)
             {
                 product.CreatedDate = DateTime.Now;
-                product.CreatorUserID = 1; // Sabit kullanıcı ID (örnek)
+                product.CreatorUserID = 1; 
                 _context.Products.Add(product);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
@@ -44,7 +41,6 @@ namespace CafeMenu.Controllers
             return View(product);
         }
 
-        // GET: Edit Product Page
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -58,7 +54,6 @@ namespace CafeMenu.Controllers
             return View(product);
         }
 
-        // POST: Edit Product in Database
         [HttpPost]
         public ActionResult Edit(Product product)
         {
@@ -81,7 +76,6 @@ namespace CafeMenu.Controllers
             return View(product);
         }
 
-        // POST: Delete Product
         [HttpPost]
         public ActionResult Delete(int id)
         {
